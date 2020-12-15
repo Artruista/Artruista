@@ -1,7 +1,9 @@
 import React from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
 import { IncreaseCounter } from './redux/actions/actions';
-
+import Login from './container/Login.jsx';
+import Header from './components/Header.jsx';
+import SignUp from './container/SignUp.jsx';
 
 
 
@@ -17,8 +19,9 @@ export default function App() {
 
   return (
     <div>
-      <h1>Hello team</h1>
-      <button onClick={handleClick}>hello: {counter}</button>
+      <Header />
+      <Login />
+      {/* <SignUp /> */}
     </div>
   )
 }
