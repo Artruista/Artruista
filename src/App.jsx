@@ -15,11 +15,9 @@ export default function App() {
     increaseCounter(); 
   };
 
-  
-
   return (
     <div>
-      <h1>Hello </h1>
+      <h1>Hello team</h1>
       <button onClick={handleClick}>hello: {counter}</button>
     </div>
   )
