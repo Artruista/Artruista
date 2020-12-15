@@ -7,15 +7,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('build'));
 
-
 const PORT = process.env.PORT || 5000;
 
 // serve main app
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './index.html'));
+	res.sendFile(path.resolve(__dirname, './index.html'));
 });
-
-
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
@@ -34,6 +31,6 @@ app.use((err, req, res, next) => {
 
 // starting server
 app.listen(PORT, (err) => {
-  if (err) return console.log(err);
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+	if (err) return console.log(err);
+	console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });
