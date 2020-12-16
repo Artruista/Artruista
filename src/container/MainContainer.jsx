@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import CardsDetail from '../components/CardsDetail.jsx';
 import { HashRouter as Router,Switch,  Route, NavLink } from 'react-router-dom';
-import Story from '../components/Story.jsx';
+// import Story from '../components/Story.jsx';
+import Header from '../components/Header.jsx'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,6 +42,7 @@ const MainContainer = () => {
     <Router> 
       <Switch>
         <Route exact path="/">
+          <Header />
           <Grid container component="main" className={classes.root}>
             <CssBaseline />
             <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -54,7 +56,7 @@ const MainContainer = () => {
             </Grid>
           </Grid>
         </Route>
-        <Route path='/story' component={Story} exact/>
+        {/* <Route path='/story' component={Story} exact/> */}
       </Switch>
     </Router>
   )

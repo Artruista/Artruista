@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router-dom';
-
+import Header from './Header.jsx'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +42,9 @@ export default function Story() {
   }
 
   return (
-    <Container className={classes.container} component="main" maxWidth="xs">
+    <React.Fragment>
+      <Header />
+      <Container className={classes.container} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -121,5 +123,6 @@ export default function Story() {
         </form>
       </div>
     </Container>
+    </React.Fragment>
   );
 }
