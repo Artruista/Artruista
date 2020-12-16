@@ -35,6 +35,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', 
     marginTop: theme.spacing(3),
   },
+  container: {
+    borderRadius: 5,
+    border: 0,
+    padding: '0 30px',
+    boxShadow: '0 3px 5px 2px rgba(45, 29, 32, .3)',
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -44,7 +50,7 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container className={classes.container} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -123,7 +129,7 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      <Box mt={30}>
+      <Box mt={15}>
         <Copyright />
       </Box>
     </Container>
