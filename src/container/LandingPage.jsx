@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from '../components/Login.jsx';
 import SignUp from '../components/SignUp.jsx';
 
@@ -10,7 +10,7 @@ const LandingPage = () => {
     <Router>
       <React.Fragment>
           <Switch>
-           <Route exact path="/" component={Login} />
+           <Route path="/" exact component={Login} />
            <Route path="/signup" component={SignUp} />
           </Switch>
         </React.Fragment>
