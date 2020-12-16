@@ -10,7 +10,7 @@ router.post('/', Controller.postStory , (req, res) => {
   return res.status(200).send()
 })
 
-router.delete('/', Controller.deleteStory , (req, res) => {
+router.delete('/:id', Controller.deleteStory , (req, res) => {
   return res.status(200).send()
 })
 
