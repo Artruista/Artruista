@@ -7,7 +7,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   // module rules
   module: {
@@ -35,23 +36,25 @@ module.exports = {
         use: ['file-loader']
       }
     ]
-  }
-  ,
+  },
+  resolve: {
+    extensions: [ '.ts', '.tsx', '.js','.jsx' ]
+  },
   // plugins
   plugins : [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: './index.html'
     })
   ],
   devServer: {
+    publicPath: '/',
     port: 8080,
     hot: true,
     compress: true,
     historyApiFallback: true,
+    contentBase: path.resolve(__dirname, './index.html'),
     proxy: {
-      '/': {
-        target: 'http://localhost:3000',
-      }
+     '/': 'http://localhost:3000',
     }
   }
 }

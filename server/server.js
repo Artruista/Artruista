@@ -15,8 +15,10 @@ app.use('/user', userRouter)
 
 // serve main app
 app.get('/', (req, res) => {
+	console.log(req);
 	res.sendFile(path.resolve(__dirname, './index.html'));
 });
+
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
