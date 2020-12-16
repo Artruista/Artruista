@@ -1,8 +1,13 @@
 import React from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
 import { IncreaseCounter } from './redux/actions/actions';
-
-
+import Login from './components/Login.jsx/index.js';
+import Header from './components/Header.jsx';
+import SignUp from './container/SignUp.jsx';
+import Story from './components/Story.jsx';
+import CardsDetail from './components/CardsDetail.jsx';
+import { BrowserRouter as Router,Switch,  Route } from 'react-router-dom';
+import MainContainer from './container/MainContainer.jsx'
 
 
 
@@ -11,14 +16,13 @@ export default function App() {
   const counter = useSelector(state => state.counter);
   const increaseCounter = () => dispatch(IncreaseCounter());
 
-  const handleClick = () => {
-    increaseCounter(); 
-  };
+
 
   return (
     <div>
-      <h1>Hello team</h1>
-      <button onClick={handleClick}>hello: {counter}</button>
+      <Header />
+      <MainContainer />
     </div>
   )
 }
+
