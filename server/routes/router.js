@@ -2,14 +2,16 @@ const express = require('express')
 const router = express.Router()
 const Controller = require('../controllers/storyController.js')
 
-router.get('/', Controller. , (req, res) => {
-  
+router.get('/', Controller.getStory , (req, res) => {
+  return res.status(200).json(res.locals.story)
 })
 
-router.post('/', Controller. , (req, res) => {
-  
+router.post('/', Controller.postStory , (req, res) => {
+  return res.status(200).send()
 })
 
-router.delete('/', Controller. , (req, res) => {
-  
+router.delete('/', Controller.deleteStory , (req, res) => {
+  return res.status(200).send()
 })
+
+module.exports = router
