@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header.jsx';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -40,10 +41,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function SignUp() {
   const classes = useStyles();
 
   return (
+    <React.Fragment>
+      <Header />
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -127,5 +131,6 @@ export default function SignUp() {
         <Copyright />
       </Box>
     </Container>
+    </React.Fragment>
   );
 }

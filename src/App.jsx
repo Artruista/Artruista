@@ -1,9 +1,9 @@
 import React from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
 import { IncreaseCounter } from './redux/actions/actions';
-import Login from './container/Login.jsx';
+import Login from './components/Login.jsx/index.js';
 import Header from './components/Header.jsx';
-import SignUp from './container/SignUp.jsx';
+import SignUp from './components/SignUp.jsx/index.js';
 
 
 
@@ -13,9 +13,7 @@ export default function App() {
   const counter = useSelector(state => state.counter);
   const increaseCounter = () => dispatch(IncreaseCounter());
 
-  const handleClick = () => {
-    increaseCounter(); 
-  };
+
 
   return (
     <div>
