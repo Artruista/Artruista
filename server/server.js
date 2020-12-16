@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
-
+const storyRouter = require('./routes/router.js')
+const userRouter = require('./routes/userRouter.js')
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -9,10 +10,15 @@ app.use(express.static('build'));
 
 const PORT = process.env.PORT || 5000;
 
+app.use('/story', storyRouter)
+app.use('/user', userRouter)
+
 // serve main app
 app.get('/', (req, res) => {
+	console.log(req);
 	res.sendFile(path.resolve(__dirname, './index.html'));
 });
+
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));

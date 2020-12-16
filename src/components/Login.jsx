@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header.jsx';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -55,6 +56,8 @@ export default function Login() {
   const classes = useStyles();
 
   return (
+    <React.Fragment>
+    <Header />
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -118,6 +121,7 @@ export default function Login() {
         </div>
       </Grid>
     </Grid>
+    </React.Fragment>
   );
 }
 
