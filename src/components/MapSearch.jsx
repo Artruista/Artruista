@@ -29,6 +29,7 @@ const MapSearch = ({panTo}) => {
 
 
   return (
+    <React.Fragment>
     <Combobox
       onSelect={async (address) => {
         // doing these to clear search suggestions
@@ -73,6 +74,7 @@ const MapSearch = ({panTo}) => {
       </ComboboxList>
     </ComboboxPopover>
     </Combobox>
+    </React.Fragment>
   );
 };
 

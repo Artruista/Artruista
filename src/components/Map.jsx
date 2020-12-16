@@ -12,7 +12,8 @@ import MapGeolocation from './MapGeolocation.jsx';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '100vw',
+  // width: '100vw',
+  width: '100%',
   height: '100vh',
 };
 
@@ -90,8 +91,6 @@ export default function Map() {
     ]);
     console.log(markers);
   };
-
-
 
 
   return (

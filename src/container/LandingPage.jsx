@@ -8,7 +8,7 @@ import Map from '../components/Map.jsx';
 
 const LandingPage = () => {
   return (
-    
+    <div>hi</div>
     // <Router>
     //   <React.Fragment>
     //       <Switch>   
@@ -20,9 +20,9 @@ const LandingPage = () => {
     //     </React.Fragment>
     // </Router>
 
-    <React.Fragment>
-      <Map />
-    </React.Fragment>
+    // <React.Fragment>
+    //   <Map />
+    // </React.Fragment>
 
   );
 }
