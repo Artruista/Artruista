@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import { useHistory } from 'react-router-dom';
+import Header from './Header.jsx'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,17 +32,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 export default function Story() {
   const classes = useStyles();
+  const history = useHistory();
+  
+  const handleSubmit = () => {
+    return history.push('/')
+  }
 
   return (
-    <Container className={classes.container} component="main" maxWidth="xs">
+    <React.Fragment>
+      <Header />
+      <Container className={classes.container} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Tell us about you
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -114,5 +123,6 @@ export default function Story() {
         </form>
       </div>
     </Container>
+    </React.Fragment>
   );
 }
