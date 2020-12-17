@@ -1,19 +1,27 @@
 const db  = require('../models/index');
 
 const storyController = {
+  //Get for all stories
+  getAllStories (req, res, next) {
+    const queryString = 'SELECT * FROM Cards;'
+    db.query(queryString)
+      .then((data) => {
+        res.locals.stories = data.rows;
+        console.log(data);
+        return next();
+      })
+      .catch((err) => {
+        console.log('error in getAllStories ', err)
+        return next(err);
+      })
+  },
   //post request
   postStory (req, res, next) {
-    const params = [req.body.UserId, req.body.Story, req.body.CovidPost, req.body.HowToHelp, req.body.PaymentAccount, req.body.ImagePath];
-    const queryString = `INSERT INTO Cards (CardId, Story, CovidPost, HowToHelp, PaymentAccount, ImagePath, CreatedAt) VALUES ((SELECT Id from Users WHERE Id = $1), $2, $3, $4, $5, $6, now()) RETURNING *;`
-    // const cb = (err, result) => {
-    //   if (err) {
-    //     console.log(`error in postStory: `)
-    //     return next(err)
-    //   }
-    //   else return next()
-    // }   
-    // console.log(req.body, " req.body")
-    // console.log(params, " PARAMS")
+    const params = [req.body.UserId, req.body.Post, req.body.Help, req.body.Payment, req.body.Longitude, req.body.Latitude];
+    console.log(params, " PARAMS")
+    const queryString = `INSERT INTO Cards (CardId, FirstName, LastName, Post, Help, Payment, Longitude, Latitude) 
+                         VALUES ((SELECT Id from Users WHERE Id = $1), (SELECT firstname from Users WHERE Id = $1), (SELECT lastname from Users WHERE Id = $1), 
+                         $2, $3, $4, $5, $6) RETURNING *;`;
     db.query(queryString, params)
       .then((data) => {
         return next()
@@ -23,23 +31,13 @@ const storyController = {
         return next(err)
       })
   },
+  
   getStory (req, res, next) {
-    const queryString = `SELECT * FROM Cards WHERE CardId = $1;`
-    const params = req.params.id
-    // const cb = (err, result) => {
-    //   if (err) {
-    //     console.log(`error in getStory`)
-    //     return next(err)
-    //   }
-    //   else 
-    //   {
-    //     res.locals.story = result.rows[0];
-    //     return next()
-    //   }
-    // }
+    const queryString = `SELECT * FROM Cards WHERE cardid = $1;`
+    const params = [req.params.id]
     db.query(queryString, params)
       .then((data) => {
-        res.local.story = result.rows[0];
+        res.locals.story = data.rows;
         return next();
       })
       .catch((err) => {
@@ -49,20 +47,12 @@ const storyController = {
   },
   
   deleteStory (req, res, next) {
-    const queryString = `DELETE FROM Cards WHERE CardId = $1 RETURNING *;`
-    const params = req.params.id
-    console.log(req.params.id, ' req.params')
-    console.log(params, ' PARAMS')
-    // const cb = (err, result) => {
-    //   if (err) {
-    //     console.log(`error in deleteStory`)
-    //     return next(err)
-    //   }
-    //   else return next()
-    // }
-    db.query(queryString, params)
+    const id = req.params.id
+    const queryString = `DELETE FROM Cards WHERE cardid = ${id};`
+    db.query(queryString)
       .then((data) => {
-        res.status(200).send('card deleted');
+        // res.status(200).send('card deleted');
+        console.log('inside query')
         return next();
       })
       .catch((err) => {
