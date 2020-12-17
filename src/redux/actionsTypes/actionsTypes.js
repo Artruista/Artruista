@@ -1,1 +1,1 @@
-export const INCREASE = 'INCREASE';
+export const ADDING_STORY = 'ADDING_STORY';
