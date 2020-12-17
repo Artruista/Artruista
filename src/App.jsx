@@ -1,6 +1,5 @@
 import React from 'react';
 import  { useSelector, useDispatch } from 'react-redux';
-import { IncreaseCounter } from './redux/actions/actions';
 import Login from './components/Login.jsx';
 import Header from './components/Header.jsx';
 import SignUp from './components/SignUp.jsx';
@@ -12,11 +11,6 @@ import MainContainer from './container/MainContainer.jsx'
 
 
 export default function App() {
-  const dispatch = useDispatch();
-  const counter = useSelector(state => state.counter);
-  const increaseCounter = () => dispatch(IncreaseCounter());
-
-
 
   return (
     <Router>
@@ -26,6 +20,7 @@ export default function App() {
            <Route path="/signup" component={SignUp} />
            <Route exact path="/" component={MainContainer} />
            <Route path='/story' component={Story} exact/>
+           {/* <Route path='/view' component={OneStory} exact/> */}
           </Switch>
         </React.Fragment>
     </Router>

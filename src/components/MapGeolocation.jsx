@@ -8,6 +8,7 @@ const MapGeolocation = ({panTo}) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           // position gives you lat and long, so want to pass that to panTo
+          console.log(position)
           panTo({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
