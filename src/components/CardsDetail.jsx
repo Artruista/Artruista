@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -28,23 +29,26 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 0,
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 }));
 
-const cards = [1, 2, 3, 4];
 
 export default function CardsDetail() {
   const classes = useStyles();
+  const cards = useSelector(state => state.userCard);
 
   return (
     <React.Fragment>
       <CssBaseline />
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6}>
+            {cards.map((card, i) => (
+              <Grid item key={i} xs={12} sm={6}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -53,21 +57,18 @@ export default function CardsDetail() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Jon 
+                      {card.firstName} 
                     </Typography>
                     <Typography>
-                      This is my story.........
+                      {card.story}
                     </Typography>
                     <Typography>
-                      How I got affected by blahhhhhh
+                      {card.help}
                     </Typography>
                   </CardContent>
-                  <CardActions>
+                  <CardActions className={classes.button}>
                     <Button size="small" color="primary">
                       View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
                     </Button>
                   </CardActions>
                 </Card>
