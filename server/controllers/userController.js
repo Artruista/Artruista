@@ -17,13 +17,23 @@ const userController = {
     // console.log('before then: ' + params);
     db.query(queryString, params)
       .then((data) => {
-        // console.log('here first then')
-        // console.log('DATA: ' + data)
-        res.locals.users = data.rows;
         return next()
       })
       .catch((err)=> {
         console.log('error in postuser')
+        return next(err)
+      })
+  },
+  getUser (req, res, next) {
+    const queryString = `SELECT * FROM Users WHERE Id = $1;`
+    const params = [req.params.id]
+    db.query(queryString, params)
+      .then((data) => {
+        res.locals.users = data.rows;
+        return next();
+      })
+      .catch((err) => {
+        console.log('error in getUSer ', err)
         return next(err)
       })
   },
