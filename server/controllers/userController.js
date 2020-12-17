@@ -21,11 +21,16 @@ const userController = {
     //test this  ?
     const queryString = `SELECT * FROM Users WHERE Username = $1;`
     const params = [req.params.Username]
+    const password = req.body.password
+
     db.query(queryString, params)
       .then((data) => {
-        //res.locals will be what returns from db
+        //res.locals will be what returns from db NOT input
+        // console.log('data', data.rows)
         res.locals.users = data.rows;
         res.locals.params = params
+        res.locals.params.push(password)
+        console.log('helloooo', res.locals.params)
         return next();
       })
       .catch((err) => {
